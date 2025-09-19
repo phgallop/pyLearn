@@ -3,8 +3,8 @@ import win32gui
 import win32con
 
 #variables - window, key and interval
-WINDOW_NAME = "example"
-KEY_W = 0x57
+WINDOW_NAME = "window"
+KEY = 0x57 #https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 INTERVAL = 5
 
 def get_window_handle(title_part): #gets window name
@@ -29,10 +29,9 @@ print(f"✅ Window found: '{win32gui.GetWindowText(hwnd)}' ✅")
 
 try:
     while True:
-        send_key(hwnd, KEY_W)
+        send_key(hwnd, KEY)
         print(f"Key pressed on {win32gui.GetWindowText(hwnd)}")
         time.sleep(INTERVAL)
 
 except KeyboardInterrupt:
     print("Interrupted.")
-
